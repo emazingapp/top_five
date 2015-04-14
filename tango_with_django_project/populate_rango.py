@@ -1,4 +1,5 @@
 import os
+from django import views
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings')
 
 import django
@@ -58,8 +59,10 @@ def add_page(cat, title, url, views=0):
     p.save()
     return p
 
-def add_cat(name):
+def add_cat(name, views, likes):
     c = Category.objects.get_or_create(name=name)[0]
+    c.views=views
+    c.likes=likes
     return c
 
 # Start execution here!
