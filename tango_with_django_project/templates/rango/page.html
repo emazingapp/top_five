@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rango - Selected Page</title>
+    </head>
+
+    <body>
+        <h1>Selected Page</h1>
+        {% if pages %}
+        <ul>
+
+            <li><a href="{{ page_url }}">{{ page_title }}</a></li>
+
+        </ul>
+        {% else %}
+            <strong>No pages currently in category.</strong>
+        {% endif %}
+    </body>
+</html>

@@ -1,8 +1,7 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 # Create your models here.
-
-from django.template.defaultfilters import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
@@ -25,6 +24,11 @@ class Page(models.Model):
     title = models.CharField(max_length=128)
     url = models.URLField()
     views = models.IntegerField(default=0)
+    slug = models.SlugField()
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Page, self).save(*args, **kwargs)
 
     def __unicode__(self):      #For Python 2, use __str__ on Python 3
         return self.title
