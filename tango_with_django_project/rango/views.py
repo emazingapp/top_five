@@ -45,6 +45,9 @@ def category(request, category_name_slug):
         # We also add the category object from the database to the context dictionary.
         # We'll use this in the template to verify that the category exists.
         context_dict['category'] = category
+        
+        context_dict['category_name_slug'] = category_name_slug
+        
     except Category.DoesNotExist:
         # We get here if we didn't find the specified category.
         # Don't do anything - the template displays the "no category" message for us.
@@ -109,7 +112,7 @@ def add_page(request, category_name_slug):
     try:
         cat = Category.objects.get(slug=category_name_slug)
     except Category.DoesNotExist:
-                cat = None
+        cat = None
 
     if request.method == 'POST':
         form = PageForm(request.POST)
@@ -126,7 +129,7 @@ def add_page(request, category_name_slug):
     else:
         form = PageForm()
 
-    context_dict = {'form':form, 'category': cat}
+    context_dict = {'form':form, 'category': cat, 'category_name_slug':category_name_slug}
 
     return render(request, 'rango/add_page.html', context_dict)
 

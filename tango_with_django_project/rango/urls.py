@@ -8,7 +8,8 @@ urlpatterns = patterns('',
         url(r'^category/(?P<category_name_slug>[\w\-]+)/$', views.category, name='category'),
         url(r'^page/(?P<page_title_slug>[\w\-]+)/$', views.page, name='page'),
         
-        url(r'^category/(?P<category_name_slug>\w+)/add_page/$', views.add_page, name='add_page'), # Page for this not done yet.
+#        url(r'^category/(?P<category_name_slug>\w+)/add_page/$', views.add_page, name='add_page'),
+        url(r'^category/(?P<category_name_slug>[\w\-]+)/add_page/$', views.add_page, name='add_page'),
         
         url(r'^register/$', views.register, name='register'),
         )
