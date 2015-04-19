@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rango - Selected Page</title>
-    </head>
+{% extends 'rango/base.html' %}
 
-    <body>
+{% load staticfiles %}
+
+{% block title %}Selected Page{% endblock %}
+
+{% block body_block %}
+
         <h1>Selected Page</h1>
         {% if pages %}
         <ul>
@@ -16,16 +17,5 @@
         {% else %}
             <strong>No pages currently in category.</strong><br>
         {% endif %}
-        
-        {% if user.is_authenticated %}
-        	<br>
-			<a href="/rango/logout/">Logout</a><br />
-        {% else %}
-        	<a href="/rango/register/">Register Here</a><br />
-			<a href="/rango/login/">Login</a><br>
-		{% endif %}
-		<br>
-		<a href="/rango/">Back to homepage</a>
-    
-    </body>
-</html>
+
+{% endblock %}
